@@ -1,0 +1,7 @@
+{
+    "name": "jquery.iocurve",
+    "version": "0.1",
+    "devDependencies": {
+        "uglify-js": "^3.10.0"
+    }
+}
