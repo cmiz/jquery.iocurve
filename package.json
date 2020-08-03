@@ -1,7 +1,7 @@
 {
     "name": "jquery.iocurve",
-    "version": "0.1",
-    "devDependencies": {
-        "uglify-js": "^3.10.0"
+    "version": "0.0.1",
+    "scripts": {
+        "build": "npx uglify-js -c -m -- src/jquery.iocurve.js > dist/jquery.iocurve.min.js"
     }
 }
