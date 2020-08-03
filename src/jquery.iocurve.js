@@ -1,5 +1,5 @@
 //
-// PhotoshopのトーンカーブのようなjQueryプラグイン
+// jquery.iocurve
 // https://github.com/cmiz/jquery.iocurve
 //
 // Copyright 2020 cmiz
