@@ -10,7 +10,7 @@ Create HTML and open in your browser.
 <div class="iocurve" style="width:300px"></div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/cmiz/jquery.iocurve@latest/dist/jquery.iocurve.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/cmiz/jquery.iocurve@0.0.2/dist/jquery.iocurve.min.js"></script>
 <script>
 $('.iocurve').iocurve();
 </script>
