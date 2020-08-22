@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+header {
+    padding: 180px 0 120px;
+    background: #344731 url(../img/logo.svg) no-repeat center 70px;
+    background-size: 100px;
+    color: #fff;
+}
+
+h1 {
+    margin: 0;
+    font-size: 300%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    letter-spacing: 3px;
+}
+
+h1 + small {
+    display: block;
+    margin: 20px 0 0;
+    font-size: 85%;
+    letter-spacing: 6px;
+}
+
+main {
+    display: block;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.box {
+    width: 50%;
+    float: left;
+}
+.curve {
+    padding: 1px;
+}
+.curvature > i {
+    display: inline-block;
+    width: 200px;
+    height: 20px;
+    vertical-align: middle;
+}
