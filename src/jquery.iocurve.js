@@ -221,27 +221,37 @@
         }
 
         // ---------------------------------------------------------
-        // アンカー入力
-        // $container.on('anchor', function( ev ){
-        //     // ev.target   DOM element
-        //     // ev.kind     'new'|'move'|'remove'
-        //     // ev.x        anchor X
-        //     // ev.y        anchor Y
+        // [イベント]アンカー入力
+        // $container.on('anchor', function( ev, anchor ){
+        //     // anchor.element   anchor DOM element
+        //     // anchor.kind      'new'|'move'|'remove'
+        //     // anchor.x         coordinate X
+        //     // anchor.y         coordinate Y
         // });
         // ---------------------------------------------------------
         function fireAnchor( $anchor, kind ){
             var p = $anchor.data('p');
-            var ev = {
-                target: $anchor[0],
+            var anchor = {
+                element: $anchor[0],
                 kind: kind,
                 x: p[0],
                 y: p[1]
             };
-            $container.trigger('anchor', [ev]);
+            $container.trigger('anchor', [anchor]);
         }
 
         // ---------------------------------------------------------
-        // 外部から任意のタイミングで出力値を取得
+        // [イベント]出力データ更新
+        // $container.on('output', function( ev, data ){
+        //     // data is array of output value
+        // });
+        // ---------------------------------------------------------
+        function fireOutput(){
+            $container.trigger('output', [outputY]);
+        }
+
+        // ---------------------------------------------------------
+        // [メソッド]出力値を取得
         // $container.trigger('data', [function( data ){
         //     // data
         // }]);
@@ -252,7 +262,7 @@
         }
 
         // ---------------------------------------------------------
-        // 動的オプション変更
+        // [メソッド]オプション変更
         // $container.trigger('option', [{
         //     // 任意のオプション
         //     // ただし anchor.points は変更不可
@@ -268,7 +278,7 @@
         }
 
         // ---------------------------------------------------------
-        // リサイズ
+        // [メソッド]リサイズ
         // $container.trigger('resized');
         // ---------------------------------------------------------
         function onResized(){
@@ -282,7 +292,7 @@
         }
 
         // ---------------------------------------------------------
-        // 破棄
+        // [メソッド]破棄
         // $container.trigger('destroy');
         // ---------------------------------------------------------
         function onDestroy(){
@@ -660,9 +670,16 @@
                 outputY[i] = ry;
             }
             function ab(){
-                a = (NY[ni+1] - NY[ni]) / (NX[ni+1] - NX[ni]);
-                b = NY[ni] - a * NX[ni];
+                var dx = NX[ni+1] - NX[ni];
+                if( dx ){
+                    a = (NY[ni+1] - NY[ni]) / dx;
+                    b = NY[ni] - a * NX[ni];
+                    return;
+                }
+                a = 0;
+                b = NY[ni];
             }
+            fireOutput();
         }
 
         // 出力データ棒グラフ
