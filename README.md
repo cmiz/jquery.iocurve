@@ -1,7 +1,7 @@
 # jquery.iocurve
 
 jQuery plugin like Tone Curve on Photoshop or GIMP.
-See [official web site](http://cmz.php.xdomain.jp/jquery.iocurve/) for more information.
+See [official page](https://cmiz.github.io/jquery.iocurve/) for more information.
 
 ## Quick start
 
@@ -10,7 +10,7 @@ Create HTML and open in your browser.
 <div class="iocurve" style="width:300px"></div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/cmiz/jquery.iocurve@0.0.2/dist/jquery.iocurve.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/cmiz/jquery.iocurve@0.0.3/dist/jquery.iocurve.min.js"></script>
 <script>
 $('.iocurve').iocurve();
 </script>
