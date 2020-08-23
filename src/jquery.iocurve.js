@@ -20,8 +20,6 @@
                 y0: 0,
                 // 曲率
                 curvature: 0.3,
-                // 高さ
-                height: '100%', // ピクセルまたは%
                 // 本体クラス名
                 className: '',
                 // 本体CSS
@@ -31,14 +29,16 @@
                 },
                 // キャンバス
                 canvas: {
+                    height: '100%', // ピクセルまたは%
+                    fillStyle: '#fff',
                     css: {
                         display: 'block',
                         boxShadow: '0 0 3px #000'
-                    },
-                    fillStyle: '#fff'
+                    }
                 },
                 // 補助目盛線
                 grid: {
+                    visible: true,
                     strokeStyle: 'rgba(0, 0, 0, 0.2)'
                 },
                 // アンカー
@@ -52,9 +52,8 @@
                         width: 18,
                         height: 18,
                         borderRadius: '50%',
-                        // border: '4px solid rgba(0, 64, 255, 0.5)',
                         border: '1px solid rgba(0, 0, 0, 0.5)',
-                        background: '#fff',
+                        background: 'rgba(255, 255, 255, 0.5)',
                         boxSizing: 'border-box',
                         cursor: 'move',
                         transform: 'translate(-50%, -50%)'
@@ -322,7 +321,7 @@
         function CanvasResize(){
             canvas.width = 0;
             VW = $content.width();
-            VH = /%/.test(option.height) ? VW * parseFloat(option.height) / 100 : option.height;
+            VH = /%/.test(option.canvas.height) ? VW * parseFloat(option.canvas.height) / 100 : option.canvas.height;
             canvas.width = VW * devicePixelRatio;
             canvas.height = VH * devicePixelRatio;
             canvas.style.width = VW + 'px';
@@ -360,8 +359,8 @@
         function Draw(){
             Interpolate();
             DrawBackground();
-            DrawHistogram();
-            DrawGrid();
+            if( option.histogram.data ) DrawHistogram();
+            if( option.grid.visible ) DrawGrid();
             if( option.bar.visible ) DrawBar();
             if( option.plot.visible ) DrawPlot();
             if( option.controlPoint.visible && cp1NX.length ) DrawControlPoints();
@@ -736,7 +735,6 @@
 
         // ヒストグラム描画
         function DrawHistogram(){
-            if( !option.histogram.data ) return;
             ctx.fillStyle = option.histogram.fillStyle;
             var bar_width = ctx.canvas.width * option.dx / rangeX;
             var bar_width_half = bar_width / 2;
