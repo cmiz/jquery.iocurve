@@ -76,6 +76,11 @@ pre code.hljs {
     padding: 1em 1.5em;
 }
 
+div.table {
+    width: 100%;
+    overflow: auto;
+}
+
 table pre {
     margin: 0;
 }

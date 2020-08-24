@@ -67,66 +67,67 @@ $curve.iocurve(option);
     y: [0, 100]
 };
 var $curve = $('.iocurve').iocurve(option);</code></pre>
-        <table>
-            <tr>
-                <th>キー</th>
-                <th>既定値</th>
-                <th>説明</th>
-                <th>指定例</th>
-            </tr>
-            <tr>
-                <td>x</td>
-                <td class="code"><pre><code class="js">[0, 255]</code></pre></td>
-                <td>X軸＝入力の数値範囲を指定します。</td>
-                <td class="code" rowspan="3"><pre><code class="js">x: [-1, 1],
+        <div class="table">
+            <table>
+                <tr>
+                    <th>キー</th>
+                    <th>既定値</th>
+                    <th>説明</th>
+                    <th>指定例</th>
+                </tr>
+                <tr>
+                    <td>x</td>
+                    <td class="code"><pre><code class="js">[0, 255]</code></pre></td>
+                    <td>X軸＝入力の数値範囲を指定します。</td>
+                    <td class="code" rowspan="3"><pre><code class="js">x: [-1, 1],
 y: [-100, 100],
 dx: 0.01</code></pre></td>
-            </tr>
-            <tr>
-                <td>y</td>
-                <td class="code"><pre><code class="js">[0, 255]</code></pre></td>
-                <td>Y軸＝出力の数値範囲を指定します。</td>
-            </tr>
-            <tr>
-                <td>dx</td>
-                <td class="code"><pre><code class="js">1</code></pre></td>
-                <td>
-                    入力値の分解幅を指定します。<br>
-                    既定値 1 は、入力範囲 0 ～ 255 を [ 0, 1, 2, 3 ... 254, 255 ] の 256 個に分解することを意味します。<br>
-                    入力値の個数はそのまま出力値の個数となります。</td>
-            </tr>
-            <tr>
-                <td>y0</td>
-                <td class="code"><pre><code class="js">0</code></pre></td>
-                <td>Y軸の見た目上の正負の堺をどこに置くか数値で指定します。</td>
-                <td class="code"><pre><code class="js"></code></pre></td>
-            </tr>
-            <tr>
-                <td>curvature</td>
-                <td class="code"><pre><code class="js">0.3</code></pre></td>
-                <td>曲率を 0 ～ 0.5 で指定します。0 は直線です。</td>
-                <td class="code"><pre><code class="js">curvature: 0.1</code></pre></td>
-            </tr>
-            <tr>
-                <td>className</td>
-                <td class="code"><pre><code class="js">''</code></pre></td>
-                <td>全体を包む&lt;div&gt;要素のクラス名を指定します。</td>
-                <td class="code"><pre><code class="js">className: 'iocurve'</code></pre></td>
-            </tr>
-            <tr>
-                <td>css</td>
-                <td class="code"><pre><code class="js">{
+                </tr>
+                <tr>
+                    <td>y</td>
+                    <td class="code"><pre><code class="js">[0, 255]</code></pre></td>
+                    <td>Y軸＝出力の数値範囲を指定します。</td>
+                </tr>
+                <tr>
+                    <td>dx</td>
+                    <td class="code"><pre><code class="js">1</code></pre></td>
+                    <td>
+                        入力値の分解幅を指定します。<br>
+                        既定値 1 は、入力範囲 0 ～ 255 を [ 0, 1, 2, 3 ... 254, 255 ] の 256 個に分解することを意味します。<br>
+                        入力値の個数はそのまま出力値の個数となります。</td>
+                </tr>
+                <tr>
+                    <td>y0</td>
+                    <td class="code"><pre><code class="js">0</code></pre></td>
+                    <td>Y軸の見た目上の正負の堺をどこに置くか数値で指定します。</td>
+                    <td class="code"><pre><code class="js"></code></pre></td>
+                </tr>
+                <tr>
+                    <td>curvature</td>
+                    <td class="code"><pre><code class="js">0.3</code></pre></td>
+                    <td>曲率を 0 ～ 0.5 で指定します。0 は直線です。</td>
+                    <td class="code"><pre><code class="js">curvature: 0.1</code></pre></td>
+                </tr>
+                <tr>
+                    <td>className</td>
+                    <td class="code"><pre><code class="js">''</code></pre></td>
+                    <td>全体を包む&lt;div&gt;要素のクラス名を指定します。</td>
+                    <td class="code"><pre><code class="js">className: 'iocurve'</code></pre></td>
+                </tr>
+                <tr>
+                    <td>css</td>
+                    <td class="code"><pre><code class="js">{
     position: 'relative',
     margin: '20px'
 }</code></pre></td>
-                <td>全体を包む&lt;div&gt;要素のCSSを指定します。</td>
-                <td class="code"><pre><code class="js">css: {
+                    <td>全体を包む&lt;div&gt;要素のCSSを指定します。</td>
+                    <td class="code"><pre><code class="js">css: {
     margin: '0'
 }</code></pre></td>
-            </tr>
-            <tr>
-                <td>canvas</td>
-                <td class="code"><pre><code class="js">{
+                </tr>
+                <tr>
+                    <td>canvas</td>
+                    <td class="code"><pre><code class="js">{
     height: '100%',
     fillStyle: '#fff',
     css: {
@@ -134,30 +135,30 @@ dx: 0.01</code></pre></td>
         boxShadow: '0 0 3px #000'
     }
 }</code></pre></td>
-                <td>
-                    キャンバス(&lt;canvas&gt;要素)の高さ、色、CSSを指定します。<br>
-                    <br>
-                    高さは％か数値(px)で指定します。％は横幅に対する割合で、100%は正方形です。
-                </td>
-                <td class="code"><pre><code class="js">canvas: {
+                    <td>
+                        キャンバス(&lt;canvas&gt;要素)の高さ、色、CSSを指定します。<br>
+                        <br>
+                        高さは％か数値(px)で指定します。％は横幅に対する割合で、100%は正方形です。
+                    </td>
+                    <td class="code"><pre><code class="js">canvas: {
     height: 300,
     css: {
         boxShadow: 'none'
     }
 }</code></pre></td>
-            </tr>
-            <tr>
-                <td>grid</td>
-                <td class="code"><pre><code class="js">{
+                </tr>
+                <tr>
+                    <td>grid</td>
+                    <td class="code"><pre><code class="js">{
     visible: true,
     strokeStyle: 'rgba(0, 0, 0, 0.2)'
 }</code></pre></td>
-                <td>補助目盛線の表示ON/OFFと線の色を指定します。</td>
-                <td class="code"><pre><code class="js">grid: { visible: false }</code></pre></td>
-            </tr>
-            <tr>
-                <td>anchor</td>
-                <td class="code"><pre><code class="js">{
+                    <td>補助目盛線の表示ON/OFFと線の色を指定します。</td>
+                    <td class="code"><pre><code class="js">grid: { visible: false }</code></pre></td>
+                </tr>
+                <tr>
+                    <td>anchor</td>
+                    <td class="code"><pre><code class="js">{
     points: [ [0, 0], [255, 255] ],
     tagName: 'a',
     className: 'anchor',
@@ -174,127 +175,132 @@ dx: 0.01</code></pre></td>
         transform: 'translate(-50%, -50%)'
     }
 }</code></pre></td>
-                <td>
-                    アンカー（制御点）の初期座標値 [X, Y] の配列と、アンカー要素のCSSを指定します。<br>
-                    <br>
-                    アンカーの初期座標値は必ず先頭と末尾の2点以上をセットし、値はXY範囲内（既定の場合は0-255）とします。<br>
-                    また先頭と末尾のX座標を、X軸の範囲の下限と上限に一致させます。たとえばX座標が [0, 100] の場合、先頭アンカーX座標を 0 、末尾アンカーX座標を 100 とします。<br>
-                </td>
-                <td class="code"><pre><code class="js">anchor: {
+                    <td>
+                        アンカー（制御点）の初期座標値 [X, Y] の配列と、アンカー要素のCSSを指定します。<br>
+                        <br>
+                        アンカーの初期座標値は必ず先頭と末尾の2点以上をセットし、値はXY範囲内（既定の場合は0-255）とします。<br>
+                        また先頭と末尾のX座標を、X軸の範囲の下限と上限に一致させます。たとえばX座標が [0, 100] の場合、先頭アンカーX座標を 0 、末尾アンカーX座標を 100 とします。<br>
+                    </td>
+                    <td class="code"><pre><code class="js">anchor: {
     points: [
         [-1, -100],
         [0, 0],
         [1, 100]
     ]
 }</code></pre></td>
-            </tr>
-            <tr>
-                <td>bar</td>
-                <td class="code"><pre><code class="js">{
+                </tr>
+                <tr>
+                    <td>bar</td>
+                    <td class="code"><pre><code class="js">{
     visible: true,
     fillStyle: {
         positive: 'rgba(0, 100, 70, 0.2)',
         negative: 'rgba(150, 30, 70, 0.2)'
     }
 }</code></pre></td>
-                <td>出力値の棒グラフ</td>
-                <td class="code"><pre><code class="js"></code></pre></td>
-            </tr>
-            <tr>
-                <td>plot</td>
-                <td class="code"><pre><code class="js">{
+                    <td>出力値の棒グラフ</td>
+                    <td class="code"><pre><code class="js"></code></pre></td>
+                </tr>
+                <tr>
+                    <td>plot</td>
+                    <td class="code"><pre><code class="js">{
     visible: false,
     strokeStyle: '#f00'
 }</code></pre></td>
-                <td>出力値の散布プロット</td>
-                <td class="code"><pre><code class="js"></code></pre></td>
-            </tr>
-            <tr>
-                <td>histogram</td>
-                <td class="code"><pre><code class="js">{
+                    <td>出力値の散布プロット</td>
+                    <td class="code"><pre><code class="js"></code></pre></td>
+                </tr>
+                <tr>
+                    <td>histogram</td>
+                    <td class="code"><pre><code class="js">{
     data: null,
     fillStyle: '#ddd'
 }</code></pre></td>
-                <td>背景ヒストグラム</td>
-                <td class="code"><pre><code class="js"></code></pre></td>
-            </tr>
-            <tr>
-                <td>controlPoint</td>
-                <td class="code"><pre><code class="js">{
+                    <td>背景ヒストグラム</td>
+                    <td class="code"><pre><code class="js"></code></pre></td>
+                </tr>
+                <tr>
+                    <td>controlPoint</td>
+                    <td class="code"><pre><code class="js">{
     visible: false,
     strokeStyle: '#00f'
 }</code></pre></td>
-                <td>曲線補間の制御点と接線</td>
-                <td class="code"><pre><code class="js"></code></pre></td>
-            </tr>
-        </table>
+                    <td>曲線補間の制御点と接線</td>
+                    <td class="code"><pre><code class="js"></code></pre></td>
+                </tr>
+            </table>
+        </div>
     </section>
 
     <section>
         <h1>イベント</h1>
-        <table>
-            <tr>
-                <th>name</th>
-                <th>説明</th>
-                <th>コード</th>
-            </tr>
-            <tr>
-                <td>anchor</td>
-                <td>アンカー入力が発生した時に発火します。</td>
-                <td class="code"><pre><code class="js">$curve.on('anchor', function( ev, anchor ){
+        <div class="table">
+            <table>
+                <tr>
+                    <th>name</th>
+                    <th>説明</th>
+                    <th>コード</th>
+                </tr>
+                <tr>
+                    <td>anchor</td>
+                    <td>アンカー入力が発生した時に発火します。</td>
+                    <td class="code"><pre><code class="js">$curve.on('anchor', function( ev, anchor ){
     // anchor.element   anchor DOM element
     // anchor.kind      'new'|'move'|'remove'
     // anchor.x         coordinate X
     // anchor.y         coordinate Y
 });</code></pre></td>
-            </tr>
-            <tr>
-                <td>output</td>
-                <td>出力値が更新された時に発火します。</td>
-                <td class="code"><pre><code class="js">$curve.on('output', function( ev, data ){
+                </tr>
+                <tr>
+                    <td>output</td>
+                    <td>出力値が更新された時に発火します。</td>
+                    <td class="code"><pre><code class="js">$curve.on('output', function( ev, data ){
     // data is array of output value
 });</code></pre></td>
-            </tr>
-        </table>
+                </tr>
+            </table>
+        </div>
     </section>
 
     <section>
         <h1>メソッド</h1>
-        <table>
-            <tr>
-                <th>name</th>
-                <th>説明</th>
-                <th>コード</th>
-            </tr>
-            <tr>
-                <td>data</td>
-                <td>出力値を取得します。</td>
-                <td class="code"><pre><code class="js">$curve.trigger('data', [function( data ){
+        <div class="table">
+            <table>
+                <tr>
+                    <th>name</th>
+                    <th>説明</th>
+                    <th>コード</th>
+                </tr>
+                <tr>
+                    <td>data</td>
+                    <td>出力値を取得します。</td>
+                    <td class="code"><pre><code class="js">$curve.trigger('data', [function( data ){
     // data
 }]);</code></pre></td>
-            </tr>
-            <tr>
-                <td>option</td>
-                <td>
-                    オプションを変更します。<br>
-                    ただしアンカー初期座標は変更できません。
-                </td>
-                <td class="code"><pre><code class="js">$curve.trigger('option', [{
+                </tr>
+                <tr>
+                    <td>option</td>
+                    <td>
+                        オプションを変更します。<br>
+                        ただしアンカー初期座標は変更できません。
+                    </td>
+                    <td class="code"><pre><code class="js">$curve.trigger('option', [{
     // 任意のオプション
     // ただし anchor.points は変更不可
 }]);</code></pre></td>
-            </tr>
-            <tr>
-                <td>resized</td>
-                <td>親要素に合わせてリサイズします。</td>
-                <td class="code"><pre><code class="js">$curve.trigger('resized');</code></pre></td>
-            </tr>
-            <tr>
-                <td>destroy</td>
-                <td>破棄します。</td>
-                <td class="code"><pre><code class="js">$curve.trigger('destroy');</code></pre></td>
-            </tr>
-        </table>
+                </tr>
+                <tr>
+                    <td>resized</td>
+                    <td>親要素に合わせてリサイズします。</td>
+                    <td class="code"><pre><code class="js">$curve.trigger('resized');</code></pre></td>
+                </tr>
+                <tr>
+                    <td>destroy</td>
+                    <td>破棄します。</td>
+                    <td class="code"><pre><code class="js">$curve.trigger('destroy');</code></pre></td>
+                </tr>
+            </table>
+        </div>
     </section>
 
     <section class="example">
