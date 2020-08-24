@@ -1,33 +1,34 @@
 window.hljs && hljs.initHighlightingOnLoad();
 
-var $bg = $('header .bg');
-$bg.iocurve({
-    x: [0, 1],
-    y: [0, 1],
-    dx: 0.001,
-    curvature: 0.25,
-    css: {
-        margin: 0
-    },
-    canvas: {
-        height: $bg.height(),
-        fillStyle: 'transparent'
-    },
-    grid: {
-        visible: false
-    },
-    anchor: {
-        points: [ [0, 0], [0.3, 0.5], [0.7, 0.1], [1, 1] ]
-    },
-    bar: {
-        fillStyle: {
-            positive: 'rgba(255, 255, 255, 0.02)'
-        }
-    }
-});
+var $curves = $();
 
-$(window).resize(function(){
-    $bg.trigger('resized');
+$('header .bg').each(function(){
+    var $curve = $(this);
+    $curve.iocurve({
+        x: [0, 1],
+        y: [0, 1],
+        dx: 0.001,
+        curvature: 0.25,
+        css: {
+            margin: 0
+        },
+        canvas: {
+            height: $curve.height(),
+            fillStyle: 'transparent'
+        },
+        grid: {
+            visible: false
+        },
+        anchor: {
+            points: [ [0, 0], [0.3, 0.5], [0.7, 0.1], [1, 1] ]
+        },
+        bar: {
+            fillStyle: {
+                positive: 'rgba(255, 255, 255, 0.02)'
+            }
+        }
+    });
+    $curves = $curves.add($curve);
 });
 
 $('.iocurve').each(function(){
@@ -57,6 +58,7 @@ $('.iocurve').each(function(){
     });
     if( option.histogram ) option.histogram.data = randomHistogram(option);
     $curve.iocurve(option);
+    $curves = $curves.add($curve);
     $input.on('scroll', function(){
         $output.scrollTop($input.scrollTop());
     });
@@ -105,4 +107,9 @@ $('.example .picture-edit').each(function(){
         }
         context.putImageData(imgdata1, 0, 0);
     });
+    $curves = $curves.add($curve);
+});
+
+$(window).resize(function(){
+    $curves.trigger('resized');
 });

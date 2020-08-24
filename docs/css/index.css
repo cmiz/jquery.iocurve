@@ -56,9 +56,9 @@ header h1 + small {
 
 main {
     display: block;
-    max-width: 1000px;
+    max-width: 1020px;
     margin: auto;
-    padding: 3em 1em;
+    padding: 3em 10px;
 }
 
 section h1 {
@@ -89,6 +89,10 @@ table pre code.hljs {
     padding: 0.5em;
 }
 
+table th.desc {
+    min-width: 200px;
+}
+
 table td.code {
     background: #f8f8f8;
 }
@@ -99,10 +103,12 @@ table td.code {
     justify-content: center;
 }
 .iocurve .curve {
-    width: 300px;
-    margin: 0 4em;
+    width: calc(100% - 140px - 120px);
+    max-width: 300px;
+    margin: 0 60px;
     position: relative;
 }
+
 .iocurve .curve:before,
 .iocurve .curve:after {
     content: '';
@@ -116,18 +122,22 @@ table td.code {
     bottom: 0;
     margin: auto;
 }
+
 .iocurve .curve:before {
     left: -30px;
 }
+
 .iocurve .curve:after {
     right: -30px;
 }
+
 .iocurve .curve input {
     position: absolute;
     left: 0;
     top: 100%;
     width: 100%;
 }
+
 .iocurve .input,
 .iocurve .output {
     width: 70px;
@@ -139,6 +149,7 @@ table td.code {
     padding: 0 0 0 0.5em;
     font-size: 90%;
     line-height: 1.2;
+    box-sizing: border-box;
 }
 
 table {
@@ -167,7 +178,8 @@ table td {
 
 .example .picture-edit {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
 }
 
 .example .picture-edit ul {
@@ -175,7 +187,20 @@ table td {
 }
 
 .example .picture-edit .curve {
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
+    margin: auto;
+}
+
+.example .picture-edit > div {
+    max-width: 100%;
+}
+
+.example .picture-edit > canvas {
+    width: calc(100% - 320px);
+    height: calc(100% - 320px);
+    max-width: 640px;
+    max-height: 640px;
 }
 
 a.github {
@@ -194,4 +219,52 @@ footer {
     text-align: center;
     background: #384b35;
     color: #fff;
+}
+
+@media (max-width: 640px) {
+
+    .example .picture-edit {
+        flex-wrap: wrap;
+    }
+
+    .example .picture-edit > canvas {
+        width: 100%;
+        height: 100%;
+        min-width: 200px;
+        min-height: 200px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .iocurve .curve {
+        width: calc(100% - 100px - 60px);
+        min-width: 160px;
+        margin: 0 30px;
+    }
+
+    .iocurve .curve:before {
+        left: -15px;
+    }
+
+    .iocurve .curve:after {
+        right: -15px;
+    }
+
+    .iocurve .input,
+    .iocurve .output {
+        width: 50px;
+        text-align: center;
+        padding: 0;
+    }
+
+}
+
+@media (max-width: 460px) {
+
+    body {
+        font-size: 12px;
+    }
+
 }
