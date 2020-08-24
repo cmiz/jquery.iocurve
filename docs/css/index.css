@@ -179,7 +179,6 @@ table td {
 .example .picture-edit {
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .example .picture-edit ul {
@@ -219,6 +218,14 @@ footer {
     text-align: center;
     background: #384b35;
     color: #fff;
+}
+
+@media (max-width: 780px) {
+
+    .example .picture-edit {
+        align-items: center;
+    }
+
 }
 
 @media (max-width: 640px) {
