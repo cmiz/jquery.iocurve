@@ -64,7 +64,7 @@ $('.iocurve').each(function(){
         $input.scrollTop($output.scrollTop());
     });
     if( $curvature.length ) $curvature.on('input', function(){
-        var v = this.value;
+        var v = this.value * 0.01;
         $curve.trigger('option', [{ curvature: v }]);
     });
     function randomHistogram( option ){
