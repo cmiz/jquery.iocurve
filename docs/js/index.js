@@ -1,4 +1,4 @@
-hljs || hljs.initHighlightingOnLoad();
+hljs && hljs.initHighlightingOnLoad();
 
 var $bg = $('header .bg');
 $bg.iocurve({
