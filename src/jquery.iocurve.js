@@ -129,6 +129,7 @@
         // アンカー移動・追加
         // ---------------------------------------------------------
         function onMousedown(ev){
+            if( 1 < ev.which ) return;
             var $target = $(ev.target);
             if( !$target.closest(this).length ) return;
             var $anc, index;
@@ -322,8 +323,8 @@
             canvas.width = 0;
             VW = $content.width();
             VH = /%/.test(option.canvas.height) ? VW * parseFloat(option.canvas.height) / 100 : option.canvas.height;
-            canvas.width = VW * devicePixelRatio;
-            canvas.height = VH * devicePixelRatio;
+            canvas.width = VW * (window.devicePixelRatio || 1);
+            canvas.height = VH * (window.devicePixelRatio || 1);
             canvas.style.width = VW + 'px';
             canvas.style.height = VH + 'px';
             to_canvasX = canvas.width / rangeX;

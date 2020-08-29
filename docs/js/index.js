@@ -81,33 +81,114 @@ $('.iocurve').each(function(){
 $('.example .picture-edit').each(function(){
     var $canvas = $(this).find('canvas');
     var $curve = $(this).find('.curve');
-    var canvas = $canvas[0];
-    var context = canvas.getContext('2d');
-    var imgdata0;
-    var imgdata1;
+    var $label = $(this).find('label');
+    var $kind = $(this).find('[name="kind"]');
     var image = new Image();
-    image.onload = function(){
+    image.onload = onload;
+    image.src = $canvas.data('src');
+    $curves = $curves.add($curve);
+
+    function onload(){
+        var canvas = $canvas[0];
         canvas.width = image.width;
         canvas.height = image.height;
+        var context = canvas.getContext('2d');
         context.drawImage(image, 0, 0);
-        imgdata0 = context.getImageData(0, 0, canvas.width, canvas.height);
-        imgdata1 = context.createImageData(canvas.width, canvas.height);
-    };
-    image.src = $canvas.data('src');
-    $curve.iocurve().on('output', function(ev, data){
-        if( !imgdata1 ) return;
-        for( var i=data.length; i--; ) data[i] = Math.round(data[i]);
+        var imgdata0 = context.getImageData(0, 0, canvas.width, canvas.height);
+        var imgdata1 = context.createImageData(canvas.width, canvas.height);
         var src = imgdata0.data;
         var dst = imgdata1.data;
+        var histogram = getHistogram(src);
+        var onOutput = {
+            RGB: function( ev, data ){
+                for( var i=data.length; i--; ) data[i] = Math.round(data[i]);
+                for( var i=0; i<src.length; i+=4 ){
+                    dst[i] = data[src[i]];
+                    dst[i+1] = data[src[i+1]];
+                    dst[i+2] = data[src[i+2]];
+                    dst[i+3] = src[i+3];
+                }
+                context.putImageData(imgdata1, 0, 0);
+            },
+            R: function( ev, data ){
+                for( var i=data.length; i--; ) data[i] = Math.round(data[i]);
+                for( var i=0; i<src.length; i+=4 ){
+                    dst[i] = data[src[i]];
+                    dst[i+1] = src[i+1];
+                    dst[i+2] = src[i+2];
+                    dst[i+3] = src[i+3];
+                }
+                context.putImageData(imgdata1, 0, 0);
+            },
+            G: function( ev, data ){
+                for( var i=data.length; i--; ) data[i] = Math.round(data[i]);
+                for( var i=0; i<src.length; i+=4 ){
+                    dst[i] = src[i];
+                    dst[i+1] = data[src[i+1]];
+                    dst[i+2] = src[i+2];
+                    dst[i+3] = src[i+3];
+                }
+                context.putImageData(imgdata1, 0, 0);
+            },
+            B: function( ev, data ){
+                for( var i=data.length; i--; ) data[i] = Math.round(data[i]);
+                for( var i=0; i<src.length; i+=4 ){
+                    dst[i] = src[i];
+                    dst[i+1] = src[i+1];
+                    dst[i+2] = data[src[i+2]];
+                    dst[i+3] = src[i+3];
+                }
+                context.putImageData(imgdata1, 0, 0);
+            }
+        };
+        $kind.each(function(){
+            var kind = this.value;
+            $curve.filter('.' + kind).iocurve({
+                histogram: {
+                    data: histogram[kind]
+                }
+            }).on('output', onOutput[kind]);
+        });
+        $kind.change(function(){
+            var $checked = $kind.filter(':checked');
+            $label.removeClass('checked');
+            $curve.addClass('hide');
+            $checked.parent().addClass('checked');
+            var $target = $curve.filter('.' + $checked.val());
+            $target.removeClass('hide').trigger('data', [function(data){
+                $target.trigger('output', [data]);
+            }]);
+        });
+    }
+
+    function getHistogram( src ){
+        var RGB = [];
+        var R = [];
+        var G = [];
+        var B = [];
+        for( var i=256; i--; ) RGB[i] = R[i] = G[i] = B[i] = 0;
         for( var i=0; i<src.length; i+=4 ){
-            dst[i] = data[src[i]];
-            dst[i+1] = data[src[i+1]];
-            dst[i+2] = data[src[i+2]];
-            dst[i+3] = src[i+3];
+            RGB[src[i]]++;
+            RGB[src[i+1]]++;
+            RGB[src[i+2]]++;
+            R[src[i]]++;
+            G[src[i+1]]++;
+            B[src[i+2]]++;
         }
-        context.putImageData(imgdata1, 0, 0);
-    });
-    $curves = $curves.add($curve);
+        var max = Math.max(
+            Math.max.apply(null, RGB),
+            Math.max.apply(null, R),
+            Math.max.apply(null, G),
+            Math.max.apply(null, B)
+        );
+        for( var i=256; i--; ){
+            RGB[i] /= max;
+            R[i] /= max;
+            G[i] /= max;
+            B[i] /= max;
+        }
+        return { RGB:RGB, R:R, G:G, B:B };
+    }
 });
 
 $(window).resize(function(){

@@ -40,11 +40,33 @@
     </section>
 
     <section>
-        <h1>使い方</h1>
+        <h1>必要条件</h1>
+        <ul>
+            <li>HTML5 Canvas</li>
+            <li>jQuery 2+</li>
+        </ul>
+    </section>
 
+    <section>
+        <h1>確認ブラウザ</h1>
+        <ul>
+            <li>
+                Windows 10
+                <ul>
+                    <li>Chrome 84+</li>
+                    <li>Firefox 79+</li>
+                    <li>Edge 44+</li>
+                    <li>IE 10+</li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h1>使い方</h1>
         <pre><code class="hljs html">&lt;div class="iocurve" style="width:300px"&gt;&lt;/div&gt;
 
-&lt;script src="https://code.jquery.com/jquery-3.5.1.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://code.jquery.com/jquery-2.2.4.min.js"&gt;&lt;/script&gt;
 &lt;script src="https://cdn.jsdelivr.net/gh/cmiz/jquery.iocurve@0.0.3/dist/jquery.iocurve.min.js"&gt;&lt;/script&gt;
 &lt;script&gt;
 var $curve = $('.iocurve');
@@ -57,7 +79,6 @@ $curve.on('output', function(ev, data){
 });
 $curve.iocurve(option);
 &lt;/script&gt;</code></pre>
-
     </section>
 
     <section>
@@ -304,7 +325,7 @@ dx: 0.01</code></pre></td>
     </section>
 
     <section class="example">
-        <h1>使用例</h1>
+        <h1>応用例</h1>
 
         <div class="wrap picture-edit">
             <div>
@@ -312,7 +333,16 @@ dx: 0.01</code></pre></td>
                     <li>写真素材を加工します</li>
                     <li>各ピクセルのRGB値をカーブの出力値に変換します</li>
                 </ul>
-                <div class="curve"></div>
+                <div class="channel">
+                    <label class="checked"><input type="radio" name="kind" value="RGB" checked>RGB</label>
+                    <label><input type="radio" name="kind" value="R">R</label>
+                    <label><input type="radio" name="kind" value="G">G</label>
+                    <label><input type="radio" name="kind" value="B">B</label>
+                </div>
+                <div class="curve RGB"></div>
+                <div class="curve R hide"></div>
+                <div class="curve G hide"></div>
+                <div class="curve B hide"></div>
             </div>
             <canvas data-src="img/sample.png"></canvas>
         </div>
@@ -365,9 +395,10 @@ dx: 0.01</code></pre></td>
 &copy; 2020 cmiz.
 </footer>
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/cmiz/jquery.iocurve@0.0.3/dist/jquery.iocurve.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.2/build/highlight.min.js"></script>
+<script src="../src/jquery.iocurve.js"></script>
 <script src="js/index.js"></script>
 </body>
 </html>

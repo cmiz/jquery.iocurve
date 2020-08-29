@@ -9,7 +9,7 @@ Create HTML and open in your browser.
 ```html
 <div class="iocurve" style="width:300px"></div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/cmiz/jquery.iocurve@0.0.3/dist/jquery.iocurve.min.js"></script>
 <script>
 $('.iocurve').iocurve();
