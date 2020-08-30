@@ -251,6 +251,31 @@ footer {
     color: #fff;
 }
 
+.iocurve .rangeslider {
+    margin-top: 30px;
+}
+
+.rangeslider--horizontal {
+    height: 12px;
+}
+
+.rangeslider__fill {
+    background: #b3cfe0;
+}
+
+.rangeslider__handle {
+    width: 20px;
+    height: 20px;
+}
+
+.rangeslider--horizontal .rangeslider__handle {
+    top: -5px;
+}
+
+.rangeslider__handle:after {
+    display: none;
+}
+
 @media (max-width: 780px) {
 
     .example .picture-edit {

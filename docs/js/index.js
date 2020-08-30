@@ -36,7 +36,7 @@ $('.iocurve').each(function(){
     var $input = $this.find('.input');
     var $curve = $this.find('.curve div');
     var $output = $this.find('.output');
-    var $curvature = $curve.next('input');
+    var $curvature = $curve.next('input[type="range"]');
     var option = $curve.data('option');
     $input.text(function(){
         var x0 = option.x ? option.x[0] : 0;
@@ -65,7 +65,7 @@ $('.iocurve').each(function(){
     $output.on('scroll', function(){
         $input.scrollTop($output.scrollTop());
     });
-    if( $curvature.length ) $curvature.on('input', function(){
+    if( $curvature.length ) $curvature.rangeslider({ polyfill:false }).on('input', function(){
         var v = this.value;
         $curve.trigger('option', [{ curvature: v }]);
     });
