@@ -56,7 +56,6 @@ $('.iocurve').each(function(){
         for( var i=data.length; i--; ) data[i] = Math.round(data[i]);
         $output.text(data.join('\r\n'));
     });
-    if( option.histogram ) option.histogram.data = randomHistogram(option);
     $curve.iocurve(option);
     $curves = $curves.add($curve);
     $input.on('scroll', function(){
@@ -65,17 +64,11 @@ $('.iocurve').each(function(){
     $output.on('scroll', function(){
         $input.scrollTop($output.scrollTop());
     });
-    if( $curvature.length ) $curvature.rangeslider({ polyfill:false }).on('input', function(){
+    $curvature.rangeslider({ polyfill: false });
+    $curvature.on('input', function(){
         var v = this.value;
         $curve.trigger('option', [{ curvature: v }]);
     });
-    function randomHistogram( option ){
-        var rangeX = option.x[1] - option.x[0];
-        var count = 1 + (rangeX / option.dx)|0;
-        var data = [];
-        for( var i=count; i--; ) data[i] = Math.random();
-        return data;
-    }
 });
 
 $('.example .picture-edit').each(function(){
@@ -98,7 +91,7 @@ $('.example .picture-edit').each(function(){
         var imgdata1 = context.createImageData(canvas.width, canvas.height);
         var src = imgdata0.data;
         var dst = imgdata1.data;
-        var histogram = getHistogram(src);
+        var histogram = getHistogramRGB(src);
         var onOutput = {
             RGB: function( ev, data ){
                 for( var i=data.length; i--; ) data[i] = Math.round(data[i]);
@@ -161,7 +154,7 @@ $('.example .picture-edit').each(function(){
         });
     }
 
-    function getHistogram( src ){
+    function getHistogramRGB( src ){
         var RGB = [];
         var R = [];
         var G = [];
