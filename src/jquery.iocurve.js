@@ -321,7 +321,7 @@
         // キャンバス大きさ
         function CanvasResize(){
             canvas.width = 0;
-            VW = $content.width();
+            VW = $content.width() || $container.width();
             VH = /%/.test(option.canvas.height) ? VW * parseFloat(option.canvas.height) / 100 : option.canvas.height;
             canvas.width = VW * (window.devicePixelRatio || 1);
             canvas.height = VH * (window.devicePixelRatio || 1);
