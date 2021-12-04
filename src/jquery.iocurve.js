@@ -158,7 +158,7 @@
                     y = Math.min(Math.max(y, 0), VW);
                     $anc = $newAnchor(x, y).insertBefore($anchors.eq(index));
                     $anchors = $content.find('.' + option.anchor.className);
-                    fireAnchor($anc, 'new', index);
+                    fireAnchor($anc, 'new');
                     fireAnchors();
                     Draw();
                 }
@@ -196,7 +196,7 @@
                     // アンカー削除
                     if( close2prev() || close2next() ){
                         onMouseup();
-                        fireAnchor($anc, 'remove', index);
+                        fireAnchor($anc, 'remove');
                         $anc.remove();
                         $anchors = $content.find('.' + option.anchor.className);
                         fireAnchors();
@@ -207,7 +207,7 @@
                 $anc.css('left', left);
                 $anc.css('top', top);
                 $anc.data('p', offset2real(left, top));
-                fireAnchor($anc, 'move', index);
+                fireAnchor($anc, 'move');
                 fireAnchors();
                 Draw();
 
