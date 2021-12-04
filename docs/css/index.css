@@ -102,6 +102,16 @@ table td.code {
     background: #f8f8f8;
 }
 
+table .caution {
+    font-size: 82%;
+    color: #e00;
+}
+
+table .caution .hljs-comment {
+    font-size: 122%;
+    color: #e99;
+}
+
 .iocurve {
     display: flex;
     align-items: center;

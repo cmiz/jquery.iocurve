@@ -123,6 +123,7 @@
         OptionInit();
         CanvasResize();
         AnchorCreate();
+        fireAnchors();
         Draw();
 
         // ---------------------------------------------------------
@@ -157,7 +158,8 @@
                     y = Math.min(Math.max(y, 0), VW);
                     $anc = $newAnchor(x, y).insertBefore($anchors.eq(index));
                     $anchors = $content.find('.' + option.anchor.className);
-                    fireAnchor($anc, 'new');
+                    fireAnchor($anc, 'new', index);
+                    fireAnchors();
                     Draw();
                 }
                 else return;
@@ -194,9 +196,10 @@
                     // アンカー削除
                     if( close2prev() || close2next() ){
                         onMouseup();
-                        fireAnchor($anc, 'remove');
+                        fireAnchor($anc, 'remove', index);
                         $anc.remove();
                         $anchors = $content.find('.' + option.anchor.className);
+                        fireAnchors();
                         Draw();
                         return;
                     }
@@ -204,7 +207,8 @@
                 $anc.css('left', left);
                 $anc.css('top', top);
                 $anc.data('p', offset2real(left, top));
-                fireAnchor($anc, 'move');
+                fireAnchor($anc, 'move', index);
+                fireAnchors();
                 Draw();
 
                 function close2prev(){
@@ -221,7 +225,7 @@
         }
 
         // ---------------------------------------------------------
-        // [イベント]アンカー入力
+        // [イベント]アンカー1つ入力
         // $container.on('anchor', function( ev, anchor ){
         //     // anchor.element   anchor DOM element
         //     // anchor.kind      'new'|'move'|'remove'
@@ -238,6 +242,18 @@
                 y: p[1]
             };
             $container.trigger('anchor', [anchor]);
+            return this;
+        }
+
+        // ---------------------------------------------------------
+        // [イベント]アンカー全体の変更
+        // $container.on('anchors', function( ev, $anchors ){
+        //     // $anchors
+        // });
+        // ---------------------------------------------------------
+        function fireAnchors(){
+            $container.trigger('anchors', [$anchors]);
+            return this;
         }
 
         // ---------------------------------------------------------
@@ -248,6 +264,7 @@
         // ---------------------------------------------------------
         function fireOutput(){
             $container.trigger('output', [outputY]);
+            return this;
         }
 
         // ---------------------------------------------------------
@@ -273,6 +290,7 @@
             OptionInit();
             CanvasResize();
             AnchorReset();
+            fireAnchors();
             Draw();
             return false;
         }
@@ -287,6 +305,7 @@
                 var p = $(this).data('p');
                 $(this).css(real2offset(p))
             });
+            fireAnchors();
             Draw();
             return false;
         }
@@ -302,6 +321,8 @@
             $container.off('resized', onResized);
             $container.off('destroy', onDestroy);
             $content.remove();
+            $anchors = $();
+            fireAnchors();
         }
 
         // オプションから決まる固定値

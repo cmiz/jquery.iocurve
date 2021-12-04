@@ -268,8 +268,22 @@ dx: 0.01</code></pre></td>
                     <th>コード</th>
                 </tr>
                 <tr>
+                    <td>anchors</td>
+                    <td>
+                        アンカーが作成・変更された時に発火します。全アンカー情報を取得します。<br>
+                        <b class="caution">※コールバック引数 $anchors は読み取り専用です。編集しないでください。</b>
+                    </td>
+                    <td class="code"><pre><code class="hljs js">$curve.on('anchors', function( ev, $anchors ){
+    // $anchors is jQuery object of all anchor elements.
+    // <b class="caution">Caution: Do not modify $anchors. It is read-only. Because it is a managed object inside the plugin.</b>
+    $anchors.each(function() {
+        // $(this) is one anchor.
+    });
+});</code></pre></td>
+                </tr>
+                <tr>
                     <td>anchor</td>
-                    <td>アンカー入力が発生した時に発火します。</td>
+                    <td>アンカー入力が発生した時に発火します。入力中のアンカー1つの情報を取得します。</td>
                     <td class="code"><pre><code class="hljs js">$curve.on('anchor', function( ev, anchor ){
     // anchor.element   anchor DOM element
     // anchor.kind      'new'|'move'|'remove'
@@ -281,7 +295,7 @@ dx: 0.01</code></pre></td>
                     <td>output</td>
                     <td>出力値が更新された時に発火します。</td>
                     <td class="code"><pre><code class="hljs js">$curve.on('output', function( ev, data ){
-    // data is array of output value
+    // data is array of output values.
 });</code></pre></td>
                 </tr>
             </table>
@@ -401,7 +415,7 @@ dx: 0.01</code></pre></td>
 </footer>
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/cmiz/jquery.iocurve@0.0.5/dist/jquery.iocurve.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/cmiz/jquery.iocurve/dist/jquery.iocurve.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.1.2/build/highlight.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/rangeslider.js@2.3.3/dist/rangeslider.min.js"></script>
 <script src="js/index.js"></script>

@@ -2,9 +2,13 @@ window.hljs && hljs.initHighlightingOnLoad();
 
 var $curves = $();
 
+function onAnchors(ev, $anchors){
+    $anchors.each(function(){ console.log(this); })
+}
+
 $('header .bg').each(function(){
     var $curve = $(this);
-    $curve.iocurve({
+    $curve.on('anchors', onAnchors).iocurve({
         x: [0, 1],
         y: [0, 1],
         dx: 0.001,
@@ -56,7 +60,7 @@ $('.iocurve').each(function(){
         for( var i=data.length; i--; ) data[i] = Math.round(data[i]);
         $output.text(data.join('\r\n'));
     });
-    $curve.iocurve(option);
+    $curve.on('anchors', onAnchors).iocurve(option);
     $curves = $curves.add($curve);
     $input.on('scroll', function(){
         $output.scrollTop($input.scrollTop());
@@ -136,7 +140,7 @@ $('.example .picture-edit').each(function(){
         };
         $kind.each(function(){
             var kind = this.value;
-            $curve.filter('.' + kind).iocurve({
+            $curve.filter('.' + kind).on('anchors', onAnchors).iocurve({
                 histogram: {
                     data: histogram[kind]
                 }
