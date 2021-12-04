@@ -21,7 +21,7 @@
 
 <main>
 
-    <section class="intro">
+    <section id="intro" class="intro">
         <h1>はじめに</h1>
         <p>jQuery プラグイン <b>jquery.iocurve</b> のページへようこそ。</p>
         <p>これはPhotoshopやGIMPなど画像加工ソフトによくある「トーンカーブ」のようなGUI部品です。</p>
@@ -40,7 +40,7 @@
         </div>
     </section>
 
-    <section>
+    <section id="requirements">
         <h1>必要条件</h1>
         <ul>
             <li>HTML5 Canvas</li>
@@ -48,7 +48,7 @@
         </ul>
     </section>
 
-    <section>
+    <section id="browsers">
         <h1>確認ブラウザ</h1>
         <ul>
             <li>
@@ -63,12 +63,12 @@
         </ul>
     </section>
 
-    <section>
+    <section id="usage">
         <h1>使い方</h1>
         <pre><code class="hljs html">&lt;div class="iocurve" style="width:300px"&gt;&lt;/div&gt;
 
 &lt;script src="https://code.jquery.com/jquery-2.2.4.min.js"&gt;&lt;/script&gt;
-&lt;script src="https://cdn.jsdelivr.net/gh/cmiz/jquery.iocurve@0.0.5/dist/jquery.iocurve.min.js"&gt;&lt;/script&gt;
+&lt;script src="https://cdn.jsdelivr.net/gh/cmiz/jquery.iocurve@0.0.6/dist/jquery.iocurve.min.js"&gt;&lt;/script&gt;
 &lt;script&gt;
 var $curve = $('.iocurve');
 var option = {
@@ -82,7 +82,7 @@ $curve.iocurve(option);
 &lt;/script&gt;</code></pre>
     </section>
 
-    <section>
+    <section id="options">
         <h1>オプション</h1>
         <pre><code class="hljs js">var option = {
     x: [0, 100],
@@ -258,7 +258,7 @@ dx: 0.01</code></pre></td>
         </div>
     </section>
 
-    <section>
+    <section id="events">
         <h1>イベント</h1>
         <div class="table">
             <table>
@@ -302,7 +302,7 @@ dx: 0.01</code></pre></td>
         </div>
     </section>
 
-    <section>
+    <section id="methods">
         <h1>メソッド</h1>
         <div class="table">
             <table>
@@ -343,7 +343,7 @@ dx: 0.01</code></pre></td>
         </div>
     </section>
 
-    <section class="example">
+    <section id="example" class="example">
         <h1>応用例</h1>
 
         <div class="wrap picture-edit">
@@ -398,12 +398,12 @@ dx: 0.01</code></pre></td>
 
     </section>
 
-    <section>
+    <section id="source">
         <h1>ダウンロード / ソースコード</h1>
         <a href="https://github.com/cmiz/jquery.iocurve" class="github"></a>
     </section>
 
-    <section>
+    <section id="license">
         <h1>ライセンス</h1>
         <a href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License 2.0</a>
     </section>
