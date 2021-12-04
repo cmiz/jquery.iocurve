@@ -3,7 +3,7 @@ window.hljs && hljs.initHighlightingOnLoad();
 var $curves = $();
 
 function onAnchors(ev, $anchors){
-    $anchors.each(function(){ console.log(this); })
+    //$anchors.each(function(){ console.log(this); })
 }
 
 $('header .bg').each(function(){
